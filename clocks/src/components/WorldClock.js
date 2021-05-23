@@ -1,6 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import WorldClockModel from './WorldClockModel';
+import Clock from './Clock';
 
 class WorldClock extends React.Component {
     constructor(props) {
@@ -23,8 +24,10 @@ class WorldClock extends React.Component {
         evt.preventDefault(); 
         const clocks = new WorldClockModel(nanoid(), this.state.title, this.state.hour);
         this.setState({
-            clocks: [...this.state.clocks, clocks]
-        }) 
+            clocks: [...this.state.clocks, clocks],
+            title: '',
+            hour: ''
+        })
     }
 
     componentDidMount() {
@@ -48,16 +51,25 @@ class WorldClock extends React.Component {
                     name="title" 
                     value={this.state.title} 
                     onChange={this.handleDataChange} 
-                    placeholder="Название"/>
+                    placeholder="Название столицы"
+                    className="form-clock"/>
                 <input 
                     type="number" 
                     name="hour" 
                     value={this.state.hour} 
                     onChange={this.handleDataChange} 
-                    placeholder="Временная зона"/>
-                <button type="submit">Добавить</button>
+                    placeholder="Временная зона"
+                    className="form-clock"/>
+                <button type="submit" className="form-btn">Добавить</button>
               </form>     
-              <div>
+              <div className="clocks">
+                {this.state.clocks.map((element) => 
+                    <Clock 
+                        key={nanoid()} 
+                        title={element.title} 
+                        hour={element.hour}                                             
+                    />)
+                }
               </div>
             </>
         )
