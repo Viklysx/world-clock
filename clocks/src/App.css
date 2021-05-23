@@ -205,6 +205,11 @@
   color: var(--greyLight-1);
 }
 
+.btn-delete {
+  width: 2rem;
+  height: 2rem;
+}
+
 form, .clocks {
   display: flex;
   margin: 0 auto;
@@ -225,6 +230,12 @@ form, .clocks {
 }
 
 .clocks-elem {
-  margin: 10px;
+  margin: 30px;
+}
+
+.clocks-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 

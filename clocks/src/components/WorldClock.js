@@ -42,6 +42,12 @@ class WorldClock extends React.Component {
         clearInterval(this.time);
     }
 
+    deleteClock = (id) => {
+        this.setState({
+            clocks: this.state.clocks.filter(clock => clock.id !== id)
+        });
+    }
+
     render() {
         return (
             <>
@@ -66,8 +72,10 @@ class WorldClock extends React.Component {
                 {this.state.clocks.map((element) => 
                     <Clock 
                         key={nanoid()} 
+                        id={element.id}
                         title={element.title} 
-                        hour={element.hour}                                             
+                        hour={element.hour} 
+                        deleteClock={this.deleteClock}                                            
                     />)
                 }
               </div>

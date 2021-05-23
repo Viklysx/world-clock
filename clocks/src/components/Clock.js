@@ -25,8 +25,9 @@ export default function Clock(props) {
   
     return (
         <div className="clocks-elem">
-            <div>
+            <div className="clocks-top">
                 <p className="capital">{props.title}</p>
+                <button className="form-btn btn-delete" onClick={() => props.deleteClock(props.id)}>✕</button>  
             </div>
             <div className="clock">
                 <div className="hand hours" style={hoursStyle}></div>
